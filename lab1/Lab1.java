@@ -1,6 +1,7 @@
 // Name:       Winston Weinert
 // Class:      COMPSCI 251
 // Assignment: Lab1
+// Date:       12-Sept-2016
 //
 // -- Comments --
 //
