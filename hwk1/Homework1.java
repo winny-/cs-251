@@ -1,3 +1,15 @@
+// Name:       Winston Weinert
+// Class:      COMPSCI 251
+// Assignment: Homework1
+// Date:       12-Sept-2016
+//
+// -- Comments --
+//
+// Should meet the requirements. Also handles EOF & bad input (such as a
+// non-numeric when reading a double) using try-catch.
+
+package Homework1;
+
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Random;
@@ -110,7 +122,8 @@ class Homework1 {
             System.out.format("For a group of %d people, the probability" +
                               " that\n" + 
                               "two people have the same birthday is %f\n",
-                              numOfPeople, simulatedProbability);
+                              numOfPeople,
+                              simulatedProbability);
 
             lastInputSuccessful = true;
         }
