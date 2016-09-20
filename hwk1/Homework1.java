@@ -35,8 +35,8 @@ class Homework1 {
         // Use double to avoid explicit cast.
         double simulationsWithSameBirthdays = 0;
 
-        for (int i = 0; i < numOfSimulations; i++) {
-            if (simulate(numOfPeople, new Random(i+1))) {
+        for (int simulation = 0; simulation < numOfSimulations; simulation++) {
+            if (simulate(numOfPeople, new Random(simulation+1))) {
                 simulationsWithSameBirthdays++;
             }
         }
