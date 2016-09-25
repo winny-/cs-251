@@ -1,3 +1,14 @@
+// Name:       Winston Weinert
+// Class:      COMPSCI 251
+// Assignment: Homework2
+// Date:       25-Sept-2016
+//
+// -- Comments --
+//
+// Should meet the requirements. Unit tests pass. It ss hacky, however I
+// assume this is the sort of thing one might expect without asking students
+// to write a lexer.
+
 package Homework2;
 
 import java.util.Scanner;
