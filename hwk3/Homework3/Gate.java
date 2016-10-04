@@ -86,15 +86,16 @@ public class Gate {
                 stateFragment = "open to get out";
                 break;
             }
-            String verbageFragment = "went out";
+            String verbFragment = "went out";
             if (this.tripodState() == State.IN && this.numPersonGoneInside() != 0) {
-                verbageFragment = "came in";
+                verbFragment = "came in";
             }
+            int numPersonAbsolute = Math.abs(this.numPersonGoneInside());
             return String.format("Gate %s is %s.\n%d persons %s through this gate\n",
                                  this.name,
                                  stateFragment,
-                                 (this.tripodState() == State.IN ? 1 : -1) * this.numPersonGoneInside(),
-                                 verbageFragment);
+                                 numPersonAbsolute,
+                                 verbFragment);
 
         }
 

@@ -15,6 +15,9 @@ CLASSPATH = .:${JUNIT}:${HAMCREST}
 JAVAC = javac
 JAVACFLAGS = -cp ${CLASSPATH}
 
+BUILDDIR = $(notdir $(shell pwd))
+ZIPFILE = ${BUILDDIR}.zip
+
 JARFILE=${PKG}.jar
 
 CLS=$(SRC:.java=.class)
@@ -31,7 +34,10 @@ clean:
 	rm -f ${JARFILE}
 	rm -f $(CLS)
 
-.PHONY: clean test all
+archive: all
+	cd .. && rm -f ${ZIPFILE} && zip -r ${ZIPFILE} ${BUILDDIR}
+
+.PHONY: clean test all archive
 
 .SUFFIXES: .class .java
 .java.class:
