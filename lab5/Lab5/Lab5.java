@@ -114,19 +114,6 @@ class LineCollection {
         }
         return m;
     }
-
-    // All of my why.
-    static Line[] stridedPointsToLines(Point[] points) {
-        assert(points.length % 2 == 0 && points.length > 0);
-        int nLines = points.length / 2;
-        Line tempLines[] = new Line[nLines];
-        for (int idx = 0; idx < nLines; idx++) {
-            int baseOffset = idx * 2;
-            tempLines[idx] = new Line(points[baseOffset],
-                                      points[baseOffset + 1]);
-        }
-        return tempLines;
-    }
 }
 
 class Line {
