@@ -41,7 +41,10 @@ public class Lab5 {
 
     @Test
     public void testDistance() {
-        assertEquals(0, new Point(1, 1).distance(new Point(1, 1)), 1);
+        assertEquals(0, new Point(1, 1).distance(new Point(1, 1)), 0);
+        assertEquals(1, new Point(1, 3).distance(new Point(1, 2)), 0);
+        assertEquals(1.4142135623730951, new Point(1, 2).distance(new Point(2, 3)), .00000000001);
+        assertEquals(2.8284271247461903, new Point(1, 2).distance(new Point(3, 4)), .00000000001);
     }
 
     @Test
