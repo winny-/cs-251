@@ -2,6 +2,10 @@ package Lab5;
 
 import java.io.PrintStream;
 import java.util.Scanner;
+
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
@@ -39,6 +43,10 @@ public class Lab5 {
         }
     }
 
+    //////////////////////////////////////////////////////////////////////
+    // Unit tests
+    //////////////////////////////////////////////////////////////////////
+    
     @Test
     public void testDistance() {
         assertEquals(0, new Point(1, 1).distance(new Point(1, 1)), 0);
@@ -90,6 +98,10 @@ class LineCollection {
         }
         return longest;
     }
+
+    //////////////////////////////////////////////////////////////////////
+    // Helper static methods
+    //////////////////////////////////////////////////////////////////////
 
     static Line[] combinations(Point[] points) {
         assert(points.length > 1);
@@ -163,8 +175,8 @@ class Point {
     // Return the Euclidean distance between this point and "that" point.
     //  Hint: Math class has sqrt method
     double distance(Point that) {
-        return Math.sqrt(Math.pow(this.x - that.x, 2) +
-                         Math.pow(this.y - that.y, 2));
+        return sqrt(pow(this.x - that.x, 2) +
+                    pow(this.y - that.y, 2));
     }
 	
     // Return true if and only if "that" is a Point object and
