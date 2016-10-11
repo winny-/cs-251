@@ -12,7 +12,7 @@ HAMCREST = /usr/share/java/hamcrest-core.jar
 CLASSPATH = .:${JUNIT}:${HAMCREST}
 
 JAVAC = javac
-JAVACFLAGS = -cp ${CLASSPATH}
+JAVACFLAGS = -g -cp ${CLASSPATH}
 
 BUILDDIR = $(notdir $(shell pwd))
 ZIPFILE = ${BUILDDIR}.zip
