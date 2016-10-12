@@ -21,8 +21,8 @@ public class GymController {
     }
 
     // Make sure tolerances are legal and
-    // change tolerances if necessary so that occupancy + upperTolerance <= 1 and 
-    //                                        occupancy - lowerTolerance >= 0
+    // change tolerances if necessary so that occupancy + outTolerance <= 1 and 
+    //                                        occupancy - inTolerance >= 0
     private void checkTolerance() {
         this.inTolerance = this.clamp(this.inTolerance);
         this.outTolerance = this.clamp(this.outTolerance);
