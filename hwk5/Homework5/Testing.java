@@ -1,3 +1,14 @@
+// Name:       Winston Weinert
+// Class:      COMPSCI 251
+// Assignment: Homework5
+// Date:       11-Oct-2016
+//
+// -- Comments --
+//
+// I changed the package name to Homework5.
+//
+// All unit tests pass.
+
 package Homework5;
 import static org.junit.Assert.*;
 
