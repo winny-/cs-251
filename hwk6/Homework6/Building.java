@@ -1,3 +1,16 @@
+// Name:       Winston Weinert
+// Class:      COMPSCI 251
+// Assignment: Homework5
+// Date:       22-Oct-2016
+//
+// -- Comments --
+//
+// I changed the package name to Homework6.
+//
+// All unit tests pass.
+//
+// I provided ArrayList and array based implementations for order().
+
 package Homework6;
 
 import java.util.ArrayList;

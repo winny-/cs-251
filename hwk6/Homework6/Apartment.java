@@ -1,3 +1,14 @@
+// Name:       Winston Weinert
+// Class:      COMPSCI 251
+// Assignment: Homework6
+// Date:       22-Oct-2016
+//
+// -- Comments --
+//
+// I changed the package name to Homework6.
+//
+// All unit tests pass.
+
 package Homework6;
 
 // This class contains the configuration of a type of apartment 
