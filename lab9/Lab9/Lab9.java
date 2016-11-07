@@ -54,39 +54,39 @@ public class Lab9 extends JFrame {
 		
         // create listener for fahrenheit to celsius conversion
         ActionListener f2c = new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    BigDecimal x;
-                    try {
-                        x = new BigDecimal(fahrenheitInput.getText().trim());
-                    } catch(NumberFormatException exn) {
-                        celsiusInput.setText("undefined");
-                        return;
-                    }
-                    BigDecimal y = x.subtract(new BigDecimal(32))
-                        .multiply(new BigDecimal(5))
-                        .divide(new BigDecimal(9), RoundingMode.HALF_UP);
-                    celsiusInput.setText(y.toPlainString());
+            public void actionPerformed(ActionEvent e) {
+                BigDecimal x;
+                try {
+                    x = new BigDecimal(fahrenheitInput.getText().trim());
+                } catch(NumberFormatException exn) {
+                    celsiusInput.setText("undefined");
+                    return;
                 }
-            };
+                BigDecimal y = x.subtract(new BigDecimal(32))
+                    .multiply(new BigDecimal(5))
+                    .divide(new BigDecimal(9), RoundingMode.HALF_UP);
+                celsiusInput.setText(y.toPlainString());
+            }
+        };
         convertFromFahrenheitButton.addActionListener(f2c);
         fahrenheitInput.addActionListener(f2c);
 
 
         ActionListener c2f = new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    BigDecimal x;
-                    try {
-                        x= new BigDecimal(celsiusInput.getText().trim());
-                    } catch(NumberFormatException exn) {
-                        fahrenheitInput.setText("undefined");
-                        return;
-                    }
-                    BigDecimal y = x.multiply(new BigDecimal(9))
-                        .divide(new BigDecimal(5), RoundingMode.HALF_UP)
-                        .add(new BigDecimal(32));
-                    fahrenheitInput.setText(y.toPlainString());
+            public void actionPerformed(ActionEvent e) {
+                BigDecimal x;
+                try {
+                    x= new BigDecimal(celsiusInput.getText().trim());
+                } catch(NumberFormatException exn) {
+                    fahrenheitInput.setText("undefined");
+                    return;
                 }
-            };
+                BigDecimal y = x.multiply(new BigDecimal(9))
+                    .divide(new BigDecimal(5), RoundingMode.HALF_UP)
+                    .add(new BigDecimal(32));
+                fahrenheitInput.setText(y.toPlainString());
+            }
+        };
         convertFromCelsiusButton.addActionListener(c2f);
         celsiusInput.addActionListener(c2f);
         
