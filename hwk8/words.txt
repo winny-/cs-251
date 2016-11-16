@@ -1,0 +1,13 @@
+noun:house
+noun:cat
+noun:dog
+verb:eat
+verb:bike
+verb:run
+adjective:purple
+adjective:small
+adverb:quickly
+adverb:vehemently
+unknown:word
+invalid:
+format

@@ -23,7 +23,7 @@ public class Lab9 extends JFrame {
         // ww: set size
         this.setPreferredSize(new Dimension(1000, 200));
         // ww: center the window
-        this.setLocationRelativeTo(null);
+        //this.setLocationRelativeTo(null);
         // set frame layout
         //
         // TODO

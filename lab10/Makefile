@@ -1,9 +1,10 @@
 # Edit these
-PKG=Lab9
-MAIN=Lab9.Lab9
+PKG=Lab10
+MAIN=Lab10.Lab10
 TESTS=Template.TemplateTests
 # And edit these. Order matters. Don't use -j.
-SRC=${PKG}/Lab9.java
+SRC=${PKG}/Lab10.java \
+	${PKG}/Keypad.java
 
 ##############################################################################
 
@@ -21,7 +22,7 @@ JARFILE=${PKG}.jar
 
 CLS=$(SRC:.java=.class)
 
-all: ${JARFILE} #test
+all: ${JARFILE} run #test
 
 ${JARFILE}: $(CLS)
 	jar cfe ./${JARFILE} ${MAIN} ./${PKG}
@@ -29,15 +30,15 @@ ${JARFILE}: $(CLS)
 test: ${JARFILE}
 	java -cp ${CLASSPATH} org.junit.runner.JUnitCore ${TESTS}
 
+run: ${JARFILE}
+	java -cp ${CLASSPATH} -jar ${JARFILE}
+
 clean:
 	rm -f ${JARFILE}
 	rm -f $(CLS)
 
 archive: all
 	cd .. && rm -f ${ZIPFILE} && zip -r ${ZIPFILE} ${BUILDDIR}
-
-run: ${JARFILE}
-	java -jar ${JARFILE}
 
 .PHONY: clean test all archive run
 

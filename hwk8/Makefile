@@ -1,9 +1,13 @@
 # Edit these
-PKG=Lab9
-MAIN=Lab9.Lab9
-TESTS=Template.TemplateTests
+PKG=Homework8
+MAIN=Homework8.Driver
+TESTS=Homework8.Testing
 # And edit these. Order matters. Don't use -j.
-SRC=${PKG}/Lab9.java
+SRC=${PKG}/Exceptions.java \
+	${PKG}/Dictionary.java \
+	${PKG}/Template.java \
+	${PKG}/Driver.java \
+	${PKG}/Testing.java
 
 ##############################################################################
 
@@ -21,7 +25,7 @@ JARFILE=${PKG}.jar
 
 CLS=$(SRC:.java=.class)
 
-all: ${JARFILE} #test
+all: ${JARFILE} test
 
 ${JARFILE}: $(CLS)
 	jar cfe ./${JARFILE} ${MAIN} ./${PKG}
@@ -36,10 +40,7 @@ clean:
 archive: all
 	cd .. && rm -f ${ZIPFILE} && zip -r ${ZIPFILE} ${BUILDDIR}
 
-run: ${JARFILE}
-	java -jar ${JARFILE}
-
-.PHONY: clean test all archive run
+.PHONY: clean test all archive
 
 .SUFFIXES: .class .java
 .java.class:

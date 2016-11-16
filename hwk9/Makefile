@@ -1,9 +1,10 @@
 # Edit these
-PKG=Lab9
-MAIN=Lab9.Lab9
-TESTS=Template.TemplateTests
+PKG=Homework9
+MAIN=Homework9.Homework9
+TESTS=Homework9.Testing
 # And edit these. Order matters. Don't use -j.
-SRC=${PKG}/Lab9.java
+SRC=${PKG}/Homework9.java \
+	${PKG}/Testing.java
 
 ##############################################################################
 
@@ -33,11 +34,11 @@ clean:
 	rm -f ${JARFILE}
 	rm -f $(CLS)
 
+run: ${JARFILE}
+	java -cp ${CLASSPATH} -jar ${JARFILE}
+
 archive: all
 	cd .. && rm -f ${ZIPFILE} && zip -r ${ZIPFILE} ${BUILDDIR}
-
-run: ${JARFILE}
-	java -jar ${JARFILE}
 
 .PHONY: clean test all archive run
 
