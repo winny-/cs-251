@@ -29,6 +29,9 @@ ${JARFILE}: $(CLS)
 test: ${JARFILE}
 	java -cp ${CLASSPATH} org.junit.runner.JUnitCore ${TESTS}
 
+run: ${JARFILE}
+	java -jar ${JARFILE}
+
 clean:
 	rm -f ${JARFILE}
 	rm -f $(CLS)
@@ -36,7 +39,7 @@ clean:
 archive: all
 	cd .. && rm -f ${ZIPFILE} && zip -r ${ZIPFILE} ${BUILDDIR}
 
-.PHONY: clean test all archive
+.PHONY: clean test all archive run
 
 .SUFFIXES: .class .java
 .java.class:
