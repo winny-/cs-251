@@ -10,9 +10,6 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 
-import Homework11.Grid;
-import Homework11.State;
-
 public class GameControllerPanel extends JPanel {
 
     private final JRadioButton xStarts = new JRadioButton("X Starts");
@@ -39,6 +36,17 @@ public class GameControllerPanel extends JPanel {
 
         this.add(newGame);
         this.add(p);
+
+        this.grid.addListener(new GridListener() {
+            GameControllerPanel self = GameControllerPanel.this;
+            public void gameFinished(Grid grid, State winner) {
+                self.won();
+            }
+
+            public State gameStarted(Grid grid) {
+                return self.playedFirstMove();
+            }
+        });
         
         newGame.addActionListener(new ActionListener() {
             GameControllerPanel self = GameControllerPanel.this;

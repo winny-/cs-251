@@ -17,7 +17,7 @@ public class GameStatsPanel extends JPanel {
     private int oWins = 0;
     private JLabel oWinsLabel = new JLabel();
     
-    GameStatsPanel() {
+    GameStatsPanel(Grid grid) {
         super();
         this.setLayout(new GridLayout(1, 3));
         this.xWinsLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -27,6 +27,15 @@ public class GameStatsPanel extends JPanel {
         this.add(this.tiesLabel);
         this.add(this.oWinsLabel);
         this.updateStats(null);
+        grid.addListener(new GridListener() {
+            public void gameFinished(Grid grid, State winner) {
+                GameStatsPanel.this.updateStats(winner);
+            }
+
+            public State gameStarted(Grid grid) {
+                return null;
+            }
+        });
     }
 
     public void updateStats(State state) {

@@ -7,9 +7,8 @@ import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
-import Homework11.Cell;
-import Homework11.State;
-import Homework11.GameStatsPanel;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Grid extends JPanel {
     //////////////////////////////////////////////////
@@ -29,15 +28,22 @@ public class Grid extends JPanel {
         {0, 4, 8},
         {6, 4, 2}
     };
+    private List<GridListener> listeners = new ArrayList<>();
     private final static int NUMCELLS = 9;
     private final Cell cells[] = new Cell[Grid.NUMCELLS];
     private int[] winConditionCache;
-    private final GameStatsPanel gameStatsPanel;
     private final ActionListener listener = new ActionListener() {
         Grid self = Grid.this;
         public void actionPerformed(ActionEvent evt) {
             if (self.turn == State.EMPTY) {
-                self.turn = self.gameControllerDelegate.playedFirstMove();
+                State t = null;
+                for (GridListener gl : self.listeners) {
+                    t = gl.gameStarted(self);
+                    if (t != null) {
+                        break;
+                    }
+                }
+                self.turn = t;
             }
             Cell source = (Cell)evt.getSource();
             int i;
@@ -60,10 +66,9 @@ public class Grid extends JPanel {
                     }
                     winner = self.cells[condition[0]].getState();
                 }
-                if (self.gameControllerDelegate != null) {
-                    self.gameControllerDelegate.won();
+                for (GridListener gl : self.listeners) {
+                    gl.gameFinished(self, winner);
                 }
-                self.gameStatsPanel.updateStats(winner);
             }
         }
     };
@@ -75,11 +80,6 @@ public class Grid extends JPanel {
     private State turn;
     public State getTurn() {
         return this.turn;
-    }
-
-    private GameControllerPanel gameControllerDelegate;
-    public void setGameControllerDelegate(GameControllerPanel delegate) {
-        this.gameControllerDelegate = delegate;
     }
 
     //////////////////////////////////////////////////
@@ -140,13 +140,20 @@ public class Grid extends JPanel {
         }
     }
 
+    public void addListener(GridListener listener) {
+        this.listeners.add(listener);
+    }
+
+    public void removeListener(GridListener listener) {
+        this.listeners.remove(listener);
+    }
+
     //////////////////////////////////////////////////
     // Constructors
     //////////////////////////////////////////////////
     
-    Grid(GameStatsPanel gameStatsPanel) {
+    Grid() {
         super();
-        this.gameStatsPanel = gameStatsPanel;
         this.setLayout(new GridLayout(3, 3));
         for (int i = 0; i < Grid.NUMCELLS; i++) {
             Cell c =  new Cell();
